@@ -1,0 +1,16 @@
+body{
+    background-color: black;
+}
+p{
+    color: red;
+    font-size: 20px;
+}
+pre{
+    color: royalblue;
+    font-size: 20px;
+}
+span{
+    color: blanchedalmond;
+    font-size: 20px;
+    
+}

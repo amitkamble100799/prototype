@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <P>Q1:Create 2 objects - parent and child. Attach methods to parent and use those methods in child object using
+        parents prototype</P>
+    <pre>
+      Ans:
+      function Parent(name) {
+        this.name = name;
+      }
+      
+      Parent.prototype.greet = function() {
+        console.log(`Hello, this is ${this.name}`);
+      }
+      
+      function Child(name) {
+        Parent.call(this, name);
+      }
+      
+      Child.prototype = Object.create(Parent.prototype);
+      const child1 = new Child('Amit');
+      child1.greet();
+      
+    </pre>
+    <p>Q2:Write code to explain prototype chaining</p>
+    <pre>
+      Ans:
+      let a= {
+        name1:"Amit",
+        Langauge:"JavaScript"
+      }
+     console.log(a);
+    
+      let P={
+        run:()=>{
+           console.log("alert");
+        }
+      }
+      P.__proto__={
+        name2:"Kamble"
+      }
+      a.__proto__=P;
+      a.run()
+      console.log(a.name2)
+<span>
+      In this programing we often take something and then extend it for example we might want to create a user object and admin and guestwill be slightly modifiedvariants of it.
+      
+      Js object have special property called prototype ie either null or references another object.
+      
+      when we try to read a prototype and its missing Js automaticaly takes it from the prototype this is called prototype inheritance 
+    </span>
+  </pre>
+    <p>Q3 :Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum
+        for multiple arrays</p>
+    
+    <pre>
+       Ans :
+       Array.prototype.sum = function() {
+        return this.reduce((acc, curr) => acc + curr, 0);
+      }
+      
+      const arr1 = [20,30];
+      const arr2 = [10, 20, 30];
+      const arr3 = [50, 100, 150];
+      console.log("arr1 sum :",arr1.sum());
+      console.log("arr2 sum :",arr2.sum()); 
+      console.log("arr3 sum :",arr3.sum()); 
+        
+    </pre>
+    <p>Q4 :Write a JavaScript function to retrieve all the names of object's own and inherited properties.</p>
+  
+    <pre>
+      Ans :
+      function getAllPropertyNames(obj) {
+        const prps = [];
+        const ownPrps = Object.getOwnPropertyNames(obj);
+        prps.push(...ownPrps);
+      
+        const prt = Object.getPrototypeOf(obj);
+      
+        if (prt !== null) {
+          const inheritedProps = getAllPropertyNames(prt);
+          prps.push(...inheritedProps);
+        }
+        return prps;
+      }
+      
+    </pre>
+</body>
+<script src="./index.js"></script>
+</html>
